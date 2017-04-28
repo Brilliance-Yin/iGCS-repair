@@ -1,0 +1,34 @@
+//
+// Prefix header for all source files of the 'iGCS' target in the 'iGCS' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+// MAVLink if this is set to YES then we only request
+// a very limited of telemetry items and we don't
+// request missions from the drone or send a
+// heartbeat from iGCS
+static const BOOL GCSStandardDataRateModeEnabled = YES;
+
+/*
+ Lumberjack logging. 
+ 
+ Options are:
+ LOG_LEVEL_OFF, LOG_LEVEL_ERROR, LOG_LEVEL_WARN, LOG_LEVEL_INFO, LOG_LEVEL_DEBUG, LOG_LEVEL_VERBOSE
+ */
+#import "DDLog.h"
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_DEBUG;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
+
